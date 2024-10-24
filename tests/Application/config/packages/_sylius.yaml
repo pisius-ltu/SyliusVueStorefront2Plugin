@@ -17,12 +17,9 @@ sylius_attribute:
             attribute_value:
                 classes:
                     model: Tests\BitBag\SyliusVueStorefront2Plugin\Entity\ProductAttributeValue
-    
-sylius_taxonomy:
-    resources:
-        taxon:
-            classes:
-                repository: BitBag\SyliusVueStorefront2Plugin\Doctrine\Repository\TaxonRepository
 
 sylius_api:
     enabled: true
+    
+sylius_mailer:
+    sender_adapter: sylius.email_sender.adapter.symfony_mailer

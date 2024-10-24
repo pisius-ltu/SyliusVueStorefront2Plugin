@@ -37,7 +37,8 @@ We are hiring developers from all over the world. Join us and start your new, ex
             <argument type="service" id="bitbag.sylius_vue_storefront2_plugin.factory.shop_user_token_factory" />
             <argument type="service" id="sylius.repository.shop_user" />
             <argument type="service" id="event_dispatcher" />
-            <argument type="string">%bitbag_sylius_vue_storefront2.refresh_token_lifespan%</argument>
+            <argument type="string">%env(APP_REFRESH_TOKEN_TTL)%</argument>
+            <argument type="string">%env(APP_REFRESH_TOKEN_EXTENDED_TTL)%</argument>
             <tag name="api_platform.graphql.mutation_resolver" />
         </service>
 
@@ -45,6 +46,12 @@ We are hiring developers from all over the world. Join us and start your new, ex
                  class="BitBag\SyliusVueStorefront2Plugin\Resolver\Mutation\Wishlist\ClearWishlistResolver">
             <argument type="service" id="event_dispatcher"/>
             <tag name="api_platform.graphql.mutation_resolver" />
+        </service>
+
+        <service id="bitbag.sylius_vue_storefront2plugin.resolver.query.password_reset_token_resolver"
+                 class="BitBag\SyliusVueStorefront2Plugin\Resolver\Query\PasswordResetTokenResolver">
+            <argument type="service" id="sylius.repository.shop_user" />
+            <tag name="api_platform.graphql.query_resolver" />
         </service>
 
         <service id="bitbag.sylius_vue_storefront2_plugin.resolver.order_address_state_resolver"
